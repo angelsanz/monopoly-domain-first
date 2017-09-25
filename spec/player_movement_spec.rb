@@ -5,7 +5,7 @@ describe 'Player movement' do
     beginning = 0
     player = Player.new
 
-    expect(player.where?).to eq(beginning)
+    expect(player.where).to eq(beginning)
   end
 
   it 'advances the quantity rolled' do
@@ -13,7 +13,7 @@ describe 'Player movement' do
 
     player.move()
 
-    expect(player.where?).to eq(FixedMovementPlayer::STEPS_MOVED)
+    expect(player.where).to eq(FixedMovementPlayer::STEPS_MOVED)
   end
 
   it 'goes around the board' do
@@ -22,7 +22,7 @@ describe 'Player movement' do
 
     player.move()
 
-    expect(player.where?).to eq(6)
+    expect(player.where).to eq(6)
   end
 
   it 'moves the sum of rolling two dice' do
@@ -30,7 +30,7 @@ describe 'Player movement' do
 
     player.move()
 
-    expect(player.where?).to be_between(1, 12)
+    expect(player.where).to be_between(1, 12)
   end
 
   class FixedMovementPlayer < Player

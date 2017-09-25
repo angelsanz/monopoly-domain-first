@@ -9,7 +9,7 @@ class Player
     @dice = SixSidedDice.new
   end
 
-  def where?
+  def where
     @location
   end
 
