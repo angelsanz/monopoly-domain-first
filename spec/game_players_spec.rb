@@ -29,7 +29,7 @@ describe 'Game players' do
     statistically_significant_number = 100
 
     statistically_significant_number.times do
-      result << Game.new(:first, :last).whose_turn
+      result << Game.new(:first, :last).next_turn
     end
 
     expect(result).to include(:last)
