@@ -20,7 +20,7 @@ describe 'Player' do
     end
   end
 
-  class SpiedDice < Dice
+  class SpiedDice < SixSidedDice
     def initialize
       @rolled = 0
     end
