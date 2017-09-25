@@ -17,11 +17,11 @@ describe 'Game players' do
   end
 
   it 'game with two players' do
-    game = Game.new(:horse, :car)
+    players = [:horse, :car]
+    game = Game.new(*players)
 
-    expect(game.is_playing?(:horse)).to be true
-    expect(game.is_playing?(:car)).to be true
-    expect(game.is_playing?(:random_player)).to be false
+    expect(players).to include(game.next_turn)
+    expect(players).to include(game.next_turn)
   end
 
   it 'game has an initial random ordering of players' do

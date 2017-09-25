@@ -1,5 +1,4 @@
 class Directory
-
   def self.to_index(name)
     name.to_i
   end

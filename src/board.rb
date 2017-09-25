@@ -10,7 +10,11 @@ class Board
 
   def self.travel(from, steps)
     current = Directory.to_index(from)
-    position = (current + steps) % SIZE
+    position = do_move(current, steps)
     Directory.to_name(position)
+  end
+
+  def self.do_move(position, steps)
+    (position + steps) % SIZE
   end
 end
