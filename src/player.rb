@@ -24,8 +24,12 @@ class Player
     @balance
   end
 
-  def receive(bonus)
-    @balance += bonus
+  def receive(amount)
+    @balance += amount
+  end
+
+  def charge(amount)
+    @balance -= amount
   end
 
   private

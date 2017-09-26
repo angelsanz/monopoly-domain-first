@@ -1,13 +1,20 @@
 require_relative '../../src/player'
 
 class FixedMovementPlayer < Player
-  STEPS_MOVED = 7
+  def initialize
+    super()
+    @steps_moved = 7
+  end
 
   def locate(location)
     @location = location
   end
 
+  def moves(steps)
+    @steps_moved = steps
+  end
+
   def roll
-    STEPS_MOVED
+    @steps_moved
   end
 end
