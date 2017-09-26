@@ -2,8 +2,6 @@ require_relative 'board'
 require_relative 'dice'
 
 class Player
-  BOARD_SIZE = 40
-
   def initialize
     @location = board.beginning
     @dice = SixSidedDice.new
@@ -14,6 +12,10 @@ class Player
     @location
   end
 
+  def send_to(location)
+    @location = location
+  end
+
   def move
     advance(roll)
   end
@@ -22,8 +24,8 @@ class Player
     @balance
   end
 
-  def receive_bonus
-    @balance += 200
+  def receive(bonus)
+    @balance += bonus
   end
 
   private
