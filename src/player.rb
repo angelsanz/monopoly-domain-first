@@ -7,6 +7,7 @@ class Player
   def initialize
     @location = board.beginning
     @dice = SixSidedDice.new
+    @balance = 0
   end
 
   def where
@@ -15,6 +16,14 @@ class Player
 
   def move
     advance(roll)
+  end
+
+  def balance
+    @balance
+  end
+
+  def receive_bonus
+    @balance += 200
   end
 
   private

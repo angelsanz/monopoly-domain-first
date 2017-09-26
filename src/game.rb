@@ -1,4 +1,5 @@
 require_relative 'round'
+require_relative 'board'
 
 class Game
   MIN_PLAYERS = 2
@@ -11,7 +12,10 @@ class Game
   end
 
   def next_turn
-    @round.next_player
+    current_player = @round.next_player
+    current_player.move
+    go_bonus(current_player)
+    current_player
   end
 
   def finished?
@@ -19,6 +23,10 @@ class Game
   end
 
   private
+
+  def go_bonus(player)
+    player.receive_bonus if player.where == Board.beginning
+  end
 
   def use(players)
     check_number_of_players(players.size)

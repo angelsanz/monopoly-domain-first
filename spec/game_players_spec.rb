@@ -17,7 +17,9 @@ describe 'Game players' do
   end
 
   it 'game with two players' do
-    players = [:horse, :car]
+    horse = Player.new
+    car = Player.new
+    players = [horse, car]
     game = Game.new(*players)
 
     expect(players).to include(game.next_turn)
@@ -25,13 +27,15 @@ describe 'Game players' do
   end
 
   it 'game has an initial random ordering of players' do
+    first = Player.new
+    last = Player.new
     result = []
     statistically_significant_number = 100
 
     statistically_significant_number.times do
-      result << Game.new(:first, :last).next_turn
+      result << Game.new(first, last).next_turn
     end
 
-    expect(result).to include(:last)
+    expect(result).to include(last)
   end
 end

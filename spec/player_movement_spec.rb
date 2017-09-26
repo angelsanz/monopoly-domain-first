@@ -1,4 +1,5 @@
 require_relative '../src/player'
+require_relative './support/fixed_movement_player'
 
 describe 'Player movement' do
   it 'starts on beginning location' do
@@ -33,18 +34,6 @@ describe 'Player movement' do
     allowed_positions = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
 
     expect(allowed_positions).to include(player.where)
-  end
-
-  class FixedMovementPlayer < Player
-    STEPS_MOVED = 7
-
-    def locate(location)
-      @location = location
-    end
-
-    def roll
-      STEPS_MOVED
-    end
   end
 end
 
