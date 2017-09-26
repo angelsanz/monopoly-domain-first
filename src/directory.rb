@@ -1,6 +1,6 @@
 class Directory
 
-  LIST=[
+  NAMES = [
     'Go','Mediterranean Avenue','South Community Chest',
     'Baltic Avenue','Income Tax','Readind Railroad',
     'Oriental Avenue','South Chance','Vermont Avenue',
@@ -14,15 +14,14 @@ class Directory
     'Marvin Gardens','Go To Jail','Pacific Avenue',
     'North Carolina Avenue','East Community Chest',
     'Pennsylvania Avenue','Short Line','East Chance',
-    'Park Place','Luxury Tax','Boardwalk']
+    'Park Place','Luxury Tax','Boardwalk'
+  ]
 
   def self.to_index(name)
-
-    name.to_i
+    NAMES.find_index(name)
   end
 
   def self.to_name(index)
-    return LIST[index] unless LIST[index].nil?
-    index.to_s
+    NAMES[index]
   end
 end

@@ -19,7 +19,7 @@ describe 'Player movement' do
 
   it 'goes around the board' do
     player = FixedMovementPlayer.new
-    player.locate('39')
+    player.locate('Boardwalk')
 
     player.move()
 

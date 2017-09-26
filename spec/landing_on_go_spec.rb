@@ -6,7 +6,7 @@ describe 'Landing on Go' do
   it 'the balance of a player landing on Go increase by $200' do
     bonus = 200
     player = FixedMovementPlayer.new
-    player.locate('33')
+    player.locate('East Community Chest')
     
     game = Game.new(player, player)
 
