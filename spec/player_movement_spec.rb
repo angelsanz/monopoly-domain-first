@@ -2,7 +2,7 @@ require_relative '../src/player'
 
 describe 'Player movement' do
   it 'starts on beginning location' do
-    beginning = '0'
+    beginning = 'Go'
     player = Player.new
 
     expect(player.where).to eq(beginning)
@@ -13,7 +13,7 @@ describe 'Player movement' do
 
     player.move()
 
-    expect(player.where).to eq('7')
+    expect(player.where).to eq('South Chance')
   end
 
   it 'goes around the board' do
@@ -22,7 +22,7 @@ describe 'Player movement' do
 
     player.move()
 
-    expect(player.where).to eq('6')
+    expect(player.where).to eq('Oriental Avenue')
   end
 
   it 'moves the sum of rolling two dice' do
@@ -30,7 +30,11 @@ describe 'Player movement' do
 
     player.move()
 
-    allowed_positions = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+    allowed_positions = ['Go','Mediterranean Avenue','South Community Chest',
+    'Baltic Avenue','Income Tax','Readind Railroad',
+    'Oriental Avenue','South Chance','Vermont Avenue',
+    'Connecticut Avenue','Just Visiting','St Charles Place',
+    'Electric Company']
 
     expect(allowed_positions).to include(player.where)
   end
