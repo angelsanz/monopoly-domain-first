@@ -13,8 +13,9 @@ class Game
 
   def next_turn
     current_player = @round.next_player
+    initial_position = current_player.where
     current_player.move
-    go_bonus(current_player)
+    go_bonus(current_player, initial_position)
     current_player
   end
 
@@ -24,8 +25,10 @@ class Game
 
   private
 
-  def go_bonus(player)
-    player.receive_bonus if player.where == Board.beginning
+  def go_bonus(player, initial_position)
+    first = Directory.to_index(initial_position)
+    last = Directory.to_index(player.where)
+    player.receive_bonus if first > last
   end
 
   def use(players)
