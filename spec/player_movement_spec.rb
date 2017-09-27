@@ -30,7 +30,7 @@ describe 'Player movement' do
 
     player.move()
 
-    reachable_locations = ['Mediterranean Avenue','South Community Chest',
+    reachable_locations = ['South Community Chest',
     'Baltic Avenue','Income Tax','Readind Railroad',
     'Oriental Avenue','South Chance','Vermont Avenue',
     'Connecticut Avenue','Just Visiting','St Charles Place',
