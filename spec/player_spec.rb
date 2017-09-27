@@ -22,15 +22,15 @@ describe 'Player' do
 
   class SpiedDice < SixSidedDice
     def initialize
-      @rolled = 0
+      @times_rolled = 0
     end
 
     def roll
-      @rolled += 1
+      @times_rolled += 1
     end
 
     def has_been_rolled?(times)
-      @rolled == times
+      @times_rolled == times
     end
   end
 end
