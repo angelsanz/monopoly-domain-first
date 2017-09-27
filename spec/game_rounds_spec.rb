@@ -4,7 +4,7 @@ require_relative './support/fixed_movement_player'
 
 describe 'Game Rounds' do
   it 'the game finishes after 20 rounds' do
-    player = FixedMovementPlayer.loser
+    player = FixedMovementPlayer.avoiding_luxury_tax_player
     players = [player, player]
     game = Game.new(*players)
     rounds_in_a_game = 20
