@@ -1,10 +1,14 @@
 require_relative '../src/game'
 require_relative './support/fixed_movement_player'
 
+
 describe 'Landing on Go To Jail' do
+  ABOUT_TO_GO_TO_JAIL = 'Indiana Avenue'
+  ABOUT_TO_PASS_OVER_GO_TO_JAIL = 'Illinois Avenue'
+
   it 'landing on Go To Jail ends up on Just Visiting' do
     player = FixedMovementPlayer.new
-    player.locate('Indiana Avenue')
+    player.locate(ABOUT_TO_GO_TO_JAIL)
 
     game = Game.new(player, player)
     game.next_turn
@@ -14,7 +18,7 @@ describe 'Landing on Go To Jail' do
 
   it 'landing on Go To Jail does not change the balance' do
     player = FixedMovementPlayer.new
-    player.locate('Indiana Avenue')
+    player.locate(ABOUT_TO_GO_TO_JAIL)
 
     game = Game.new(player, player)
 
@@ -23,7 +27,7 @@ describe 'Landing on Go To Jail' do
 
   it 'passing over Go To Jail does not change the balance' do
     player = FixedMovementPlayer.new
-    player.locate('Illinois Avenue')
+    player.locate(ABOUT_TO_PASS_OVER_GO_TO_JAIL)
 
     game = Game.new(player, player)
 
