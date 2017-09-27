@@ -18,11 +18,11 @@ describe 'Player movement' do
 
   it 'goes around the board' do
     player = TestPlayer.with_fixed_seven_movement
-    player.locate('Boardwalk')
+    player.locate(JUST_BEFORE_BOARD_END)
 
     player.move()
 
-    expect(player.where).to eq('Oriental Avenue')
+    expect(player.where).to eq(PAST_BOARD_BEGINNING)
   end
 
   it 'moves the sum of rolling two dice' do
@@ -38,5 +38,8 @@ describe 'Player movement' do
 
     expect(reachable_locations).to include(player.where)
   end
+
+  JUST_BEFORE_BOARD_END = 'Boardwalk'
+  PAST_BOARD_BEGINNING = 'Oriental Avenue'
 end
 
