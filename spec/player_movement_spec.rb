@@ -31,13 +31,13 @@ describe 'Player movement' do
 
     player.move()
 
-    allowed_locations = ['Go','Mediterranean Avenue','South Community Chest',
+    reachable_locations = ['Mediterranean Avenue','South Community Chest',
     'Baltic Avenue','Income Tax','Readind Railroad',
     'Oriental Avenue','South Chance','Vermont Avenue',
     'Connecticut Avenue','Just Visiting','St Charles Place',
     'Electric Company']
 
-    expect(allowed_locations).to include(player.where)
+    expect(reachable_locations).to include(player.where)
   end
 end
 
