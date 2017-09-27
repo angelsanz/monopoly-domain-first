@@ -7,10 +7,14 @@ class TestPlayer < Player
     player
   end
 
-  def self.avoiding_luxury_tax_player
+  def self.avoiding_luxury_tax
     player = new
     player.moves(5)
     player
+  end
+
+  def self.with_fixed_seven_movement
+    new
   end
 
   def initialize(name = '')

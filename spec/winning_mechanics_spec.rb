@@ -2,8 +2,8 @@ require_relative 'spec_helper'
 
 describe 'Winning Mechanics' do
   it 'a player loses when his balance is below zero' do
-    competitor_one = TestPlayer.avoiding_luxury_tax_player
-    competitor_two = TestPlayer.avoiding_luxury_tax_player
+    competitor_one = TestPlayer.avoiding_luxury_tax
+    competitor_two = TestPlayer.avoiding_luxury_tax
     loser = TestPlayer.loser
 
     game = Game.new(loser, competitor_one, competitor_two)

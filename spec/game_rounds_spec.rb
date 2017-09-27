@@ -2,7 +2,7 @@ require_relative 'spec_helper'
 
 describe 'Game Rounds' do
   it 'the game finishes after 20 rounds' do
-    player = TestPlayer.avoiding_luxury_tax_player
+    player = TestPlayer.avoiding_luxury_tax
     players = [player, player]
     game = Game.new(*players)
     rounds_in_a_game = 20

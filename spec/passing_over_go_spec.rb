@@ -3,7 +3,7 @@ require_relative 'spec_helper'
 describe 'Passing over go' do
   it 'when passing over go receive bonus' do
     bonus = 200
-    player = TestPlayer.new
+    player = TestPlayer.with_fixed_seven_movement
     player.locate('Boardwalk')
     
     game = Game.new(player, player)
@@ -12,7 +12,7 @@ describe 'Passing over go' do
   end
 
   it 'when starts at "Go" dont receive bonus' do
-    player = TestPlayer.new
+    player = TestPlayer.with_fixed_seven_movement
     player.locate('Go')
     
     game = Game.new(player, player)

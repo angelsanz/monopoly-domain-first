@@ -6,7 +6,7 @@ describe 'Landing on Go To Jail' do
   ABOUT_TO_PASS_OVER_GO_TO_JAIL = 'Illinois Avenue'
 
   it 'landing on Go To Jail ends up on Just Visiting' do
-    player = TestPlayer.new
+    player = TestPlayer.with_fixed_seven_movement
     player.locate(ABOUT_TO_GO_TO_JAIL)
 
     game = Game.new(player, player)
@@ -16,7 +16,7 @@ describe 'Landing on Go To Jail' do
   end
 
   it 'landing on Go To Jail does not change the balance' do
-    player = TestPlayer.new
+    player = TestPlayer.with_fixed_seven_movement
     player.locate(ABOUT_TO_GO_TO_JAIL)
 
     game = Game.new(player, player)
@@ -25,7 +25,7 @@ describe 'Landing on Go To Jail' do
   end
 
   it 'passing over Go To Jail does not change the balance' do
-    player = TestPlayer.new
+    player = TestPlayer.with_fixed_seven_movement
     player.locate(ABOUT_TO_PASS_OVER_GO_TO_JAIL)
 
     game = Game.new(player, player)
