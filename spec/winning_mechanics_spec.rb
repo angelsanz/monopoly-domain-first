@@ -17,7 +17,7 @@ describe 'Winning Mechanics' do
   end
 
   it 'a player wins when every other player has lost' do
-    winner = Player.new
+    winner = TestPlayer.not_loser
     loser = TestPlayer.loser
     players = [loser, winner]
 
@@ -27,22 +27,22 @@ describe 'Winning Mechanics' do
   end
 
   it 'a player wins when every other player has lost' do
-    winner = Player.new
+    winner = TestPlayer.not_loser
     loser = TestPlayer.loser
-    another_loser = Player.new
-    players = [loser, winner, another_loser]
+    loser_wannabe = TestPlayer.new
+    players = [loser, winner, loser_wannabe]
 
     game = Game.new(*players)
 
     expect{ play_a_round(game, players.size) }.not_to raise_error('We got a winner!')
 
-    make_lose(another_loser)
+    make_lose(loser_wannabe)
 
     expect{ play_a_round(game, players.size) }.to raise_error('We got a winner!')
   end
 
   def make_lose(player)
-    player.charge(100)
+    player.charge(player.balance + 1)
   end
 
   def play_a_round(game, turns)

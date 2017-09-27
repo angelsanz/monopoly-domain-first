@@ -7,6 +7,13 @@ class TestPlayer < Player
     player
   end
 
+  def self.not_loser
+    player = new
+    player.receive(INFINITE_MONEY)
+    player
+  end
+  INFINITE_MONEY = 1_000_000_000
+
   def self.avoiding_luxury_tax
     player = new
     player.moves(5)

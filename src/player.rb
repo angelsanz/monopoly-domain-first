@@ -6,6 +6,7 @@ class Player
     @location = board.beginning
     @dice = SixSidedDice.new
     @balance = 0
+    @properties = []
   end
 
   def where
@@ -30,6 +31,16 @@ class Player
 
   def charge(amount)
     @balance -= amount
+  end
+
+  def buy(cost)
+    return if owns?(where)
+    charge(cost)
+    @properties << where
+  end
+
+  def owns?(property)
+    @properties.include?(property)
   end
 
   private

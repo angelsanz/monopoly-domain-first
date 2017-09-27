@@ -5,12 +5,12 @@ module Rules
   class Engine
     def initialize
       @preferent_rule = GoBonus
-      @rules = [GoToJail, IncomeTax, LuxuryTax]
+      @rules = [GoToJail, IncomeTax, LuxuryTax, BuyProperty]
     end
 
     def apply(player, initial_location)
       @preferent_rule.apply(player, initial_location)
-      @rules.each do |rule| 
+      @rules.each do |rule|
         rule.apply(player)
       end
     end
@@ -69,6 +69,25 @@ module Rules
         location = Directory.to_index(player.where)
 
         player.charge(TAX) if location == LOCATION
+      end
+    end
+  end
+
+  class BuyProperty
+    COST = {
+      3 => 60
+    }
+
+    class << self
+      def apply(player)
+        location = Directory.to_index(player.where)
+        return unless property?(location)
+
+        player.buy(COST[location])
+      end
+
+      def property?(location)
+        COST.keys.include?(location)
       end
     end
   end

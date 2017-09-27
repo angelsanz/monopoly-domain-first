@@ -15,7 +15,7 @@ describe 'Game Rounds' do
   end
 
   it 'the game maintains the same order of players in every round' do
-    players = [Player.new, Player.new]
+    players = [TestPlayer.not_loser, TestPlayer.not_loser]
     game = Game.new(*players)
 
     first_round = play_round(game, players)
