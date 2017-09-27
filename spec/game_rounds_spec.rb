@@ -1,8 +1,11 @@
 require_relative '../src/game'
+require_relative '../src/player'
+require_relative './support/fixed_movement_player'
 
 describe 'Game Rounds' do
   it 'the game finishes after 20 rounds' do
-    players = [Player.new, Player.new]
+    player = FixedMovementPlayer.loser
+    players = [player, player]
     game = Game.new(*players)
     rounds_in_a_game = 20
 

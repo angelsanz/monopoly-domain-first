@@ -9,15 +9,27 @@ class Round
     @played
   end
 
+  def eliminate(player)
+    eliminated_index = @players.find_index(player)
+
+    @players.delete(player)
+
+    @index -= 1 if eliminated_index < @index
+
+    next_round if finished?
+  end
+
   def next_player
     result = @players[@index]
     @index += 1
    
-    if finished?
-      next_round
-    end
+    next_round if finished?
 
     result
+  end
+
+  def winner?
+    @players.size == 1
   end
 
   private

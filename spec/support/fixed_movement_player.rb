@@ -1,9 +1,26 @@
 require_relative '../../src/player'
 
 class FixedMovementPlayer < Player
-  def initialize
+  def self.loser
+    player = new
+    player.charge(1)
+    player
+  end
+
+  def self.avoiding_luxury_tax_player
+    player = new
+    player.moves(5)
+    player
+  end
+
+  def initialize(name = '')
     super()
     @steps_moved = 7
+    @name = name
+  end
+
+  def name
+    @name
   end
 
   def locate(location)

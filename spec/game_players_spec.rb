@@ -1,4 +1,5 @@
 require_relative '../src/game'
+require_relative './support/fixed_movement_player'
 
 describe 'Game players' do
   it 'game needs two players in order to start' do
@@ -27,15 +28,16 @@ describe 'Game players' do
   end
 
   it 'game has an initial random ordering of players' do
-    first = Player.new
-    last = Player.new
     result = []
     statistically_significant_number = 100
 
     statistically_significant_number.times do
-      result << Game.new(first, last).next_turn
+      first = FixedMovementPlayer.new('first')
+      last = FixedMovementPlayer.new('last')
+      result << Game.new(first, last).next_turn.name
     end
 
-    expect(result).to include(last)
+    expect(result).to include('last')
+    expect(result).to include('first')
   end
 end
