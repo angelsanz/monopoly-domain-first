@@ -1,6 +1,4 @@
-require_relative '../src/game'
-require_relative '../src/player'
-require_relative './support/fixed_movement_player'
+require_relative 'spec_helper'
 
 describe 'Landing on Go' do
   it 'the balance of a player landing on Go increase by $200' do

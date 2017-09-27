@@ -1,6 +1,4 @@
-require_relative '../src/game'
-require_relative '../src/player'
-require_relative './support/fixed_movement_player'
+require_relative 'spec_helper'
 
 describe 'Winning Mechanics' do
   it 'a player loses when his balance is below zero' do

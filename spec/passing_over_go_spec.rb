@@ -1,5 +1,4 @@
-require_relative '../src/game'
-require_relative './support/fixed_movement_player'
+require_relative 'spec_helper'
 
 describe 'Passing over go' do
   it 'when passing over go receive bonus' do

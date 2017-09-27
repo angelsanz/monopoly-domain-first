@@ -1,5 +1,4 @@
-require_relative '../src/player'
-require_relative './support/fixed_movement_player'
+require_relative 'spec_helper'
 
 describe 'Player movement' do
   it 'starts on beginning location' do

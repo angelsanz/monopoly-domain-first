@@ -1,5 +1,4 @@
-require_relative '../src/game'
-require_relative './support/fixed_movement_player'
+require_relative 'spec_helper'
 
 describe 'Landing on luxury tax' do
   it 'landing on luxury tax decrease balance by $75' do

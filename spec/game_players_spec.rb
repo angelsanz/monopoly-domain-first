@@ -1,5 +1,4 @@
-require_relative '../src/game'
-require_relative './support/fixed_movement_player'
+require_relative 'spec_helper'
 
 describe 'Game players' do
   it 'game needs two players in order to start' do
