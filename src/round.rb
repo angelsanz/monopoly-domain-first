@@ -1,8 +1,8 @@
 class Round
   def initialize(players)
     @players = players
+    @index_of_next_player = 0
     @played = 0
-    @index = 0
   end
 
   def played
@@ -14,15 +14,15 @@ class Round
 
     @players.delete(player)
 
-    @index -= 1 if eliminated_index < @index
+    @index_of_next_player -= 1 if eliminated_index < @index_of_next_player
 
     next_round if finished?
   end
 
   def next_player
-    result = @players[@index]
-    @index += 1
-   
+    result = @players[@index_of_next_player]
+    @index_of_next_player += 1
+
     next_round if finished?
 
     result
@@ -35,11 +35,11 @@ class Round
   private
 
   def finished?
-    @index >= @players.size
+    @index_of_next_player >= @players.size
   end
 
   def next_round
     @played += 1
-    @index = 0
+    @index_of_next_player = 0
   end
 end
