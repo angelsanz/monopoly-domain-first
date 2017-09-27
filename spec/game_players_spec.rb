@@ -28,16 +28,16 @@ describe 'Game players' do
   end
 
   it 'game has an initial random ordering of players' do
-    result = []
+    who_started_game = []
     statistically_significant_number = 100
 
     statistically_significant_number.times do
       first = FixedMovementPlayer.new('first')
       last = FixedMovementPlayer.new('last')
-      result << Game.new(first, last).next_turn.name
+      who_started_game << Game.new(first, last).next_turn.name
     end
 
-    expect(result).to include('last')
-    expect(result).to include('first')
+    expect(who_started_game).to include('last')
+    expect(who_started_game).to include('first')
   end
 end
