@@ -31,8 +31,8 @@ describe 'Game players' do
     statistically_significant_number = 100
 
     statistically_significant_number.times do
-      first = FixedMovementPlayer.new('first')
-      last = FixedMovementPlayer.new('last')
+      first = TestPlayer.new('first')
+      last = TestPlayer.new('last')
       who_started_game << Game.new(first, last).next_turn.name
     end
 

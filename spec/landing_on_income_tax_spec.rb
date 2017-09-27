@@ -4,7 +4,7 @@ require_relative 'spec_helper'
 describe 'Landing on Income Tax' do
   it 'with a total worth of $1800 the balance decreases by $180' do
     tax = 180
-    player = FixedMovementPlayer.new
+    player = TestPlayer.new
     player.moves(1)
     player.locate('Baltic Avenue')
     player.receive(1800)
@@ -16,7 +16,7 @@ describe 'Landing on Income Tax' do
 
   it 'with a total worth of $0 the balance decreases by $0' do
     tax = 0
-    player = FixedMovementPlayer.new
+    player = TestPlayer.new
     player.moves(1)
     player.locate('Baltic Avenue')
     
@@ -27,7 +27,7 @@ describe 'Landing on Income Tax' do
 
   it 'with a total worth of $2000 the balance decreases by $200' do
     tax = 200
-    player = FixedMovementPlayer.new
+    player = TestPlayer.new
     player.moves(1)
     player.locate('Baltic Avenue')
     player.receive(2000)
@@ -39,7 +39,7 @@ describe 'Landing on Income Tax' do
 
   it 'with a total worth of $2200 the balance decreases by $200' do
     tax = 200
-    player = FixedMovementPlayer.new
+    player = TestPlayer.new
     player.moves(1)
     player.locate('Baltic Avenue')
     player.receive(2200)
@@ -50,7 +50,7 @@ describe 'Landing on Income Tax' do
   end
 
   it 'passing over "Income Tax" dont change balance' do
-    player = FixedMovementPlayer.new
+    player = TestPlayer.new
     player.locate('Baltic Avenue')
     
     game = Game.new(player, player)

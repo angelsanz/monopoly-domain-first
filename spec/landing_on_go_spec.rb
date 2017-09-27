@@ -3,7 +3,7 @@ require_relative 'spec_helper'
 describe 'Landing on Go' do
   it 'the balance of a player landing on Go increase by $200' do
     bonus = 200
-    player = FixedMovementPlayer.new
+    player = TestPlayer.new
     player.locate('East Community Chest')
     
     game = Game.new(player, player)

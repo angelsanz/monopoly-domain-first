@@ -3,7 +3,7 @@ require_relative 'spec_helper'
 describe 'Landing on luxury tax' do
   it 'landing on luxury tax decrease balance by $75' do
     tax = 75
-    player = FixedMovementPlayer.new
+    player = TestPlayer.new
     player.locate('Pacific Avenue')
     
     game = Game.new(player, player)
@@ -12,7 +12,7 @@ describe 'Landing on luxury tax' do
   end
 
   it 'passing over luxury tax does not change the balance' do
-    player = FixedMovementPlayer.new
+    player = TestPlayer.new
     player.locate('North Carolina Avenue')
     
     game = Game.new(player, player)

@@ -1,6 +1,6 @@
 require_relative '../../src/player'
 
-class FixedMovementPlayer < Player
+class TestPlayer < Player
   def self.loser
     player = new
     player.charge(1)

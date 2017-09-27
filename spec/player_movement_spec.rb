@@ -9,7 +9,7 @@ describe 'Player movement' do
   end
 
   it 'advances the quantity rolled' do
-    player = FixedMovementPlayer.new
+    player = TestPlayer.new
 
     player.move()
 
@@ -17,7 +17,7 @@ describe 'Player movement' do
   end
 
   it 'goes around the board' do
-    player = FixedMovementPlayer.new
+    player = TestPlayer.new
     player.locate('Boardwalk')
 
     player.move()
