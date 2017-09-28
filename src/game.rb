@@ -1,6 +1,28 @@
 require_relative 'round'
 require_relative 'rules'
 
+class Register
+  def initialize
+    @properties = {
+      'Baltic Avenue' => { cost: 60, owned: false }
+    }
+  end
+
+  def cost(location)
+    @properties[location][:cost]
+  end
+
+  def owned?(location)
+    return true unless @properties.include?(location)
+
+    @properties[location][:owned]
+  end
+
+  def bought(location)
+    @properties[location][:owned] = true
+  end
+end
+
 class Game
   MIN_PLAYERS = 2
   MAX_PLAYERS = 8
@@ -10,6 +32,7 @@ class Game
     use(players)
     @round = Round.new(@players)
     @rules = Rules::Engine.new
+    @register = Register.new
   end
 
   def next_turn
@@ -20,6 +43,7 @@ class Game
     initial_location = current_player.where
     current_player.move
     @rules.apply(current_player, initial_location)
+    buy_property(current_player)
     current_player
   end
 
@@ -28,6 +52,14 @@ class Game
   end
 
   private
+
+  def buy_property(player)
+    location = player.where
+    return if @register.owned?(location)
+
+    player.buy(@register.cost(location))
+    @register.bought(location)
+  end
 
   def get_no_loser
     current_player = @round.next_player

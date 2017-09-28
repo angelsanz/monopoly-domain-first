@@ -1,6 +1,12 @@
 require_relative '../../src/player'
 
 class TestPlayer < Player
+  def self.rich
+    player = new
+    player.receive(1_000_000)
+    player
+  end
+
   def self.loser
     player = new
     player.charge(1)

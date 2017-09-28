@@ -1,52 +1,45 @@
+require_relative 'spec_helper'
+
 describe 'buy property' do
+
   it 'players who land on an unowned property automatically buy it' do
-    property = 'Baltic Avenue'
+    rich = rich_about_to_land_in_a_property
+    initial_balance = rich.balance
     cost = 60
-    player = TestPlayer.new
-    player.receive(100)
-    player.locate('Go')
-    player.moves(3)
-    game = Game.new(player, Player.new)
+
+    game = Game.new(rich, rich)
 
     game.next_turn
-    game.next_turn
 
-    expect(player.balance).to eq(40)
-    expect(player.owns?(property)).to be true
+    expect(rich.owns?(rich.where)).to be true
+    expect(rich.balance).to eq(initial_balance - cost)
   end
 
-  it 'player who lands on an property he owns does not buy it again' do
-    player = TestPlayer.new
-    player.receive(100)
-    player.locate('Go')
-    player.moves(3)
-    game = Game.new(player, TestPlayer.avoiding_luxury_tax)
-
-    game.next_turn
-    game.next_turn
-
-    initial_balance = player.balance
-    player.locate('Go')
-    player.moves(3)
-
-    game.next_turn
-    game.next_turn
-
-    expect(player.balance).to eq(initial_balance)
+  it 'player who lands on an property owned does not buy it' do
+    game = Game.new(rich_about_to_land_in_a_property, rich_about_to_land_in_a_property)
+    owner = game.next_turn
+    
+    player = game.next_turn
+    
+    expect(player.owns?(player.where)).to be false
   end
 
   it 'player who passes over an unowned property does not buy it' do
-    player = TestPlayer.new
-    initial_balance = 100
-    player.receive(initial_balance)
-    player.locate('Go')
+    player = TestPlayer.rich
     player.moves(5)
+    initial_balance = player.balance
 
-    game = Game.new(player, TestPlayer.avoiding_luxury_tax)
+    game = Game.new(player, player)
 
-    game.next_turn
     game.next_turn
 
     expect(player.balance).to eq(initial_balance)
+  end
+
+  def rich_about_to_land_in_a_property
+    rich = TestPlayer.rich
+    rich.locate('Go')
+    rich.moves(3)
+    rich
   end
 end

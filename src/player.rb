@@ -34,7 +34,6 @@ class Player
   end
 
   def buy(cost)
-    return if owns?(where)
     charge(cost)
     @properties << where
   end
