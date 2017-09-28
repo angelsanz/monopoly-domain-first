@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  monopoly_system:
+    build: .
+    command: bash /monopoly_system/bin/monopoly_system
+    volumes:
+      - .:/monopoly_system
