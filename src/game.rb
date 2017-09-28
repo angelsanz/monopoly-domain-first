@@ -1,27 +1,6 @@
 require_relative 'round'
 require_relative 'rules'
-
-class Register
-  def initialize
-    @properties = {
-      'Baltic Avenue' => { cost: 60, owned: false }
-    }
-  end
-
-  def cost(location)
-    @properties[location][:cost]
-  end
-
-  def owned?(location)
-    return true unless @properties.include?(location)
-
-    @properties[location][:owned]
-  end
-
-  def bought(location)
-    @properties[location][:owned] = true
-  end
-end
+require_relative 'register'
 
 class Game
   MIN_PLAYERS = 2
@@ -44,6 +23,7 @@ class Game
     current_player.move
     @rules.apply(current_player, initial_location)
     buy_property(current_player)
+    pay_rent(current_player)
     current_player
   end
 
@@ -59,6 +39,23 @@ class Game
 
     player.buy(@register.cost(location))
     @register.bought(location)
+  end
+
+  def pay_rent(player)
+    location = player.where
+
+    return unless @register.is_property?(location)
+    return unless @register.owned?(location)
+    return if player.owns?(location)
+
+    rent = @register.rent(location)
+    player.charge(rent)
+
+    owner = @players.find do |player|
+      player.owns?(location)
+    end
+
+    owner.receive(rent)
   end
 
   def get_no_loser

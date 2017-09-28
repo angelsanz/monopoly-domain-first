@@ -3,7 +3,7 @@ require_relative 'spec_helper'
 describe 'buy property' do
 
   it 'players who land on an unowned property automatically buy it' do
-    rich = rich_about_to_land_in_a_property
+    rich = TestPlayer.rich_about_to_land_in_a_property
     initial_balance = rich.balance
     cost = 60
 
@@ -16,7 +16,10 @@ describe 'buy property' do
   end
 
   it 'player who lands on an property owned does not buy it' do
-    game = Game.new(rich_about_to_land_in_a_property, rich_about_to_land_in_a_property)
+    game = Game.new(
+      TestPlayer.rich_about_to_land_in_a_property,
+      TestPlayer.rich_about_to_land_in_a_property
+    )
     owner = game.next_turn
     
     player = game.next_turn
@@ -34,12 +37,5 @@ describe 'buy property' do
     game.next_turn
 
     expect(player.balance).to eq(initial_balance)
-  end
-
-  def rich_about_to_land_in_a_property
-    rich = TestPlayer.rich
-    rich.locate('Go')
-    rich.moves(3)
-    rich
   end
 end

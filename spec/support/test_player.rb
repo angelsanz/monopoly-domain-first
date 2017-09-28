@@ -7,6 +7,13 @@ class TestPlayer < Player
     player
   end
 
+  def self.rich_about_to_land_in_a_property
+    rich = TestPlayer.rich
+    rich.locate('Go')
+    rich.moves(3)
+    rich
+  end
+
   def self.loser
     player = new
     player.charge(1)
